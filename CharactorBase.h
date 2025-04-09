@@ -22,7 +22,7 @@ struct CharactorBase
 	classes eMyClass;
 	int iMyHealth = baseHealth;
 	int iMyDamage = baseDamage;
-	bool bIsEnemy = false;
+	int exp = 0;
 
 	void PrintMyClass()
 	{
@@ -70,11 +70,10 @@ struct CharactorBase
 	}
 
 	CharactorBase() {};
-	CharactorBase(classes eInitMyClass, int iInitHealth, int iInitDamage, bool bInitIsEnemy = false)
+	CharactorBase(classes eInitMyClass, int iInitHealth, int iInitDamage)
 	{
 		eMyClass = eInitMyClass;
 		iMyHealth = iInitHealth;
 		iMyDamage = iInitDamage;
-		bIsEnemy = bInitIsEnemy;
 	}
 };

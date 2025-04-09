@@ -3,7 +3,21 @@
 #include <iostream>
 #include "CharactorBase.h"
 
+#ifdef _DEBUG
+
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+#ifndef DBG_NEW 
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ ) 
+#define new DBG_NEW 
+
+#endif
+#endif
+
 using namespace std;
+using json = nlohmann::json;
 
 struct Management
 {
@@ -23,7 +37,7 @@ struct Management
 
 		Quit();
 
-		return false;
+		return bIsQuit;
 	}
 
 	void MainLobby()
@@ -71,9 +85,9 @@ struct Management
 
 			tagCharactor->PrintMyState();
 
-			cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 : ";
+			cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 6. 불러오기 : ";
 			cin >> iInput;
-			if (!CheckInputRange(iInput, 1, 4))
+			if (!CheckInputRange(iInput, 1, 5))
 			{
 				continue;
 			}
@@ -84,8 +98,12 @@ struct Management
 				Battle(INTERMEDIATE);
 			else if (iInput == 3)
 				Battle(ADVANCED);
-			else
+			else if (iInput == 4)
 				return;
+			else if (iInput == 5)
+				break;
+			else if (iInput == 5)
+				break;
 
 			system("pause");
 		}
@@ -199,7 +217,5 @@ struct Management
 	{
 		delete tagCharactor;
 		tagCharactor = nullptr;
-
-		exit(0);
 	}
 };

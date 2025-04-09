@@ -11,6 +11,8 @@
 
 #include <iostream>
 
+#include "json.hpp"
+
 #include "Management.h"
 #include "CharactorBase.h"
 
