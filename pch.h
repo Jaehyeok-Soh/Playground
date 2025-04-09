@@ -11,4 +11,7 @@
 
 #include <iostream>
 
+#include "Management.h"
+#include "CharactorBase.h"
+
 #endif //PCH_H
