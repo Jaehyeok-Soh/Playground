@@ -15,6 +15,11 @@ std::string PathManager::GetDataPath()
 	return "assets\\data.json";
 }
 
+std::string PathManager::GetSavePath()
+{
+	return "assets\\save.json";
+}
+
 std::string PathManager::GetCurrentPath()
 {
 	char path[_MAX_PATH];

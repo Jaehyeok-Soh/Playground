@@ -17,6 +17,5 @@
 
 #include "Management.h"
 #include "CharactorBase.h"
-#include "PathManager.h"
 
 #endif //PCH_H

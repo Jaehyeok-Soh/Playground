@@ -86,8 +86,9 @@ struct Management
 			else if (iInput == 4)
 				return;
 			else if (iInput == 5)
-				break;
-			else if (iInput == 5)
+				Save();
+			else if (iInput == 6)
+				Save();
 				break;
 
 			system("pause");
@@ -128,7 +129,7 @@ struct Management
 
 			if (iInput == 1)
 			{
-				tagCharactor->Battle(&tagEnemy);
+				loop = tagCharactor->Battle(&tagEnemy);
 				
 				continue;
 			}
@@ -178,7 +179,9 @@ struct Management
 
 	bool Save()
 	{
-
+		json j;
+		j = *tagCharactor;
+		cout << j.dump(4);
 		return true;
 	}
 

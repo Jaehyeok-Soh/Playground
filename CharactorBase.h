@@ -1,11 +1,14 @@
 #pragma once
 
+#include "json.hpp"
+
 #include <iostream>
 
 #define baseHealth 100;
 #define baseDamage 10;
 
 using namespace std;
+using json = nlohmann::json;
 
 enum classes
 {
@@ -26,6 +29,16 @@ struct CharactorBase
 	bool bIsEnemy = false;
 	int iMyLevel = 1;
 	int iMyExp = 0;
+
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(
+		CharactorBase
+		, eMyClass
+		, iMyMaxHealth
+		, iMyHealth
+		, iMyDamage
+		, bIsEnemy
+		, iMyLevel
+		, iMyExp);
 
 	void PrintMyClass()
 	{
@@ -70,14 +83,15 @@ struct CharactorBase
 		}
 	}
 
-	void Battle(CharactorBase* pTagEnemy)
+	bool Battle(CharactorBase* pTagEnemy)
 	{
+		bool bIsContinued = true;
 		iMyHealth -= pTagEnemy->iMyDamage;
 		pTagEnemy->iMyHealth -= iMyDamage;
 
 		if (!bIsEnemy)
 		{
-			if (pTagEnemy->iMyHealth == 0)
+			if (pTagEnemy->iMyHealth <= 0)
 			{
 				cout << "½Â¸®\n";
 				if (iMyHealth <= 0)
@@ -94,17 +108,21 @@ struct CharactorBase
 
 					iMyDamage += 1;
 				}
-
-				return;
+				bIsContinued = false;
+				return bIsContinued;
 			}
 
 			if (iMyHealth <= 0)
 			{
 				cout << "ÇÃ·¹ÀÌ¾î »ç¸Á\n";
 				iMyHealth = iMyMaxHealth;
-				return;
+
+				bIsContinued = false;
+				return bIsContinued;
 			}
 		}
+
+		return bIsContinued;
 	}
 
 	CharactorBase() {};
@@ -119,3 +137,25 @@ struct CharactorBase
 		bIsEnemy = bInitIsEnemy;
 	}
 };
+
+inline void to_json(nlohmann::json& j, const classes& c) {
+	switch (c) {
+	case classes::WARRIOR: j = "Warrior"; break;
+	case classes::MAGE:    j = "Mage"; break;
+	case classes::ROGUE:  j = "Rogue"; break;
+	case classes::BEGINNER: j = "Beginner"; break;
+	case classes::INTERMEDIATE: j = "Intermediate"; break;
+	case classes::ADVANCED: j = "Advanced"; break;
+	}
+}
+
+inline void from_json(const nlohmann::json& j, classes& c) {
+	std::string s = j.get<std::string>();
+	if (s == "Warrior") c = classes::WARRIOR;
+	else if (s == "Mage") c = classes::MAGE;
+	else if (s == "Rogue") c = classes::ROGUE;
+	else if (s == "Beginner") c = classes::BEGINNER;
+	else if (s == "Intermediate") c = classes::INTERMEDIATE;
+	else if (s == "Advanced") c = classes::ADVANCED;
+	else throw std::invalid_argument("Invalid role: " + s);
+}

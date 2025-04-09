@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pch.h"
+
 #include <string>
 
 class PathManager
@@ -8,6 +10,8 @@ public:
 	static std::string GetAssetPath(const std::string& fileName);
 
 	static std::string GetDataPath();
+
+	static std::string GetSavePath();
 
 	static std::string GetCurrentPath();
 

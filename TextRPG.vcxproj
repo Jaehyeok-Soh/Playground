@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="JsonManager.h" />
+    <ClCompile Include="JsonManager.cpp" />
     <ClCompile Include="PathManager.cpp" />
     <ClCompile Include="PathManager.h" />
     <ClCompile Include="pch.cpp">
