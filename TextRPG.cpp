@@ -15,7 +15,7 @@
 
 using namespace std;
 
-void main()
+int main()
 {
 	bool bIsQuit = false;
 
@@ -28,7 +28,7 @@ void main()
 
 	tagManagement.Quit();
 
-	return;
+	return 0;
 }
 
 //#include "pch.h"

@@ -9,11 +9,14 @@
 
 // add headers that you want to pre-compile here
 
+#include <Windows.h>
 #include <iostream>
+#include <string>
 
 #include "json.hpp"
 
 #include "Management.h"
 #include "CharactorBase.h"
+#include "PathManager.h"
 
 #endif //PCH_H
