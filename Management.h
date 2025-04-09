@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iostream>
+
+#include "json.hpp"
+
 #include "CharactorBase.h"
 
 using namespace std;
@@ -65,11 +68,6 @@ struct Management
 		{
 			system("cls");
 
-			if (tagCharactor->iMyHealth <= 0)
-			{
-				tagCharactor->iMyHealth = baseHealth;
-			}
-
 			tagCharactor->PrintMyState();
 
 			cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 6. 불러오기 : ";
@@ -103,13 +101,13 @@ struct Management
 		switch (eEnemyClass)
 		{
 		case BEGINNER:
-			tagEnemy = CharactorBase(BEGINNER, 30, 3);
+			tagEnemy = CharactorBase(BEGINNER, 30, 3, 3);
 			break;
 		case INTERMEDIATE:
-			tagEnemy = CharactorBase(INTERMEDIATE, 60, 6);
+			tagEnemy = CharactorBase(INTERMEDIATE, 60, 6, 6);
 			break;
 		case ADVANCED:
-			tagEnemy = CharactorBase(ADVANCED, 90, 9);
+			tagEnemy = CharactorBase(ADVANCED, 90, 9, 9);
 			break;
 		}
 
@@ -131,21 +129,7 @@ struct Management
 			if (iInput == 1)
 			{
 				tagCharactor->Battle(&tagEnemy);
-				if (tagEnemy.iMyHealth == 0)
-				{
-					cout << "승리\n";
-					if (tagCharactor->iMyHealth <= 0)
-					{
-						tagCharactor->iMyHealth = 1;
-					}
-					return;
-				}
-
-				if (tagCharactor->iMyHealth <= 0)
-				{
-					cout << "플레이어 사망\n";
-					return;
-				}
+				
 				continue;
 			}
 			else
@@ -192,17 +176,29 @@ struct Management
 		return;
 	}
 
-	bool CheckInputRange(int iCheckInput, int iStart, int iEnd)
+	bool Save()
 	{
-		if (iCheckInput >= iStart && iCheckInput <= iEnd)
-			return true;
-		else
-			return false;
+
+		return true;
+	}
+
+	bool Load()
+	{
+
+		return true;
 	}
 
 	void Quit()
 	{
 		delete tagCharactor;
 		tagCharactor = nullptr;
+	}
+
+	bool CheckInputRange(int iCheckInput, int iStart, int iEnd)
+	{
+		if (iCheckInput >= iStart && iCheckInput <= iEnd)
+			return true;
+		else
+			return false;
 	}
 };

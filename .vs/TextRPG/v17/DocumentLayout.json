@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\jh\\jusin\\TextRPG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\TextRPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:TextRPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\Management.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:Management.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\CharactorBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:CharactorBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\Management.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:Management.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:pch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|C:\\Users\\jh\\jusin\\TextRPG\\TextRPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{59A468C9-94C5-4EC1-8E5B-58352694CF68}|TextRPG.vcxproj|solutionrelative:TextRPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,43 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "pch.h",
-              "DocumentMoniker": "C:\\Users\\jh\\jusin\\TextRPG\\pch.h",
-              "RelativeDocumentMoniker": "pch.h",
-              "ToolTip": "C:\\Users\\jh\\jusin\\TextRPG\\pch.h",
-              "RelativeToolTip": "pch.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-09T05:14:08.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "pch.cpp",
-              "DocumentMoniker": "C:\\Users\\jh\\jusin\\TextRPG\\pch.cpp",
-              "RelativeDocumentMoniker": "pch.cpp",
-              "ToolTip": "C:\\Users\\jh\\jusin\\TextRPG\\pch.cpp",
-              "RelativeToolTip": "pch.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-09T05:14:08.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "TextRPG.cpp",
               "DocumentMoniker": "C:\\Users\\jh\\jusin\\TextRPG\\TextRPG.cpp",
               "RelativeDocumentMoniker": "TextRPG.cpp",
               "ToolTip": "C:\\Users\\jh\\jusin\\TextRPG\\TextRPG.cpp",
               "RelativeToolTip": "TextRPG.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-08T05:18:49.722Z",
               "EditorCaption": ""
@@ -75,17 +41,17 @@
         },
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Management.h",
               "DocumentMoniker": "C:\\Users\\jh\\jusin\\TextRPG\\Management.h",
               "RelativeDocumentMoniker": "Management.h",
               "ToolTip": "C:\\Users\\jh\\jusin\\TextRPG\\Management.h",
               "RelativeToolTip": "Management.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABkAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-09T04:32:20.407Z",
               "EditorCaption": ""
@@ -98,7 +64,7 @@
               "RelativeDocumentMoniker": "CharactorBase.h",
               "ToolTip": "C:\\Users\\jh\\jusin\\TextRPG\\CharactorBase.h",
               "RelativeToolTip": "CharactorBase.h",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAWwEcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-09T04:31:34.316Z",
               "EditorCaption": ""
