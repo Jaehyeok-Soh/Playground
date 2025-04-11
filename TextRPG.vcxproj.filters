@@ -30,6 +30,9 @@
     <ClCompile Include="Charactor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
