@@ -18,80 +18,56 @@ std::string FileManager::GetDataPath()
 
 std::string FileManager::GetSavePath()
 {
-	char cFileContents[100];
+	std::ifstream inFile(GetDataPath());
+	Data jsonData;
 
-	JsonData jsonData;
-
-	if (pFile == nullptr)
-	{
-		err = fopen_s(&pFile, GetDataPath().c_str(), "rt");
-	}
-
-	if (err == 0)
-	{
-		fgets(cFileContents, sizeof(cFileContents), pFile);
-
-		json j = cFileContents;
-		jsonData = j.get<JsonData>();
-	}
-	else
+	if (!inFile.is_open())
 	{
 		cout << "file stream error\n";
+		return "";
 	}
 
-	CloseFileStream();
+	json j;
+	inFile >> j;
+	jsonData = j.get<Data>();
+
+	inFile.close();
 
 	return jsonData.save_path;
 }
 
 void FileManager::Save(Charactor* pPlayer)
 {
-	const char* pSavePath = GetSavePath().c_str();
-
 	json j = *pPlayer;
 
-	if (pFile == nullptr)
-	{
-		err = fopen_s(&pFile, pSavePath, "wt");
-	}
+	std::ofstream outFile(GetSavePath());
 
-	if (err == 0)
-	{
-		fputs(j.dump(4).c_str(), pFile);
-		cout << "저장 성공\n";
-	}
-	else
+	if (!outFile)
 	{
 		cout << "file stream error\n";
+		return;
 	}
 
-	CloseFileStream();
+	outFile << j.dump(4);
+	outFile.close();
+
+	cout << "저장 성공\n";
 }
 
 void FileManager::Load(Charactor* pPlayer)
 {
-	const char* pSavePath = GetSavePath().c_str();
-	char cLoadContents[100];
-	json j;
+	std::ifstream inFile(GetSavePath());
 
-	if (pFile == nullptr)
-	{
-		err = fopen_s(&pFile, pSavePath, "rt");
-	}
-
-	if (err == 0)
-	{
-		fgets(cLoadContents, sizeof(cLoadContents), pFile);
-		j = cLoadContents;
-		Charactor bufferData = j.get<Charactor>();
-		*pPlayer = bufferData;
-
-		cout << "load complete\n";
-	}
-	else
+	if (!inFile.is_open())
 	{
 		cout << "file stream error\n";
 	}
+
+	json j;
+	inFile >> j;
+	*pPlayer = j.get<Charactor>();
+
+	cout << "불러오기 성공\n";
 }
 
 std::string FileManager::GetCurrentPath()
@@ -99,10 +75,4 @@ std::string FileManager::GetCurrentPath()
 	char path[_MAX_PATH];
 	GetModuleFileNameA(NULL, path, MAX_PATH);
 	return std::string(path);
-}
-
-void FileManager::CloseFileStream()
-{
-	fclose(pFile);
-	pFile = nullptr;
 }

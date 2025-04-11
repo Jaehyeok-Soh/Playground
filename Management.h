@@ -1,10 +1,13 @@
 #pragma once
 
+#include "pch.h"
+
 #include <iostream>
 
 #include "json.hpp"
 
 #include "Charactor.h"
+#include "FileManager.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -69,7 +72,7 @@ struct Management
 
 			player->PrintMyState();
 
-			cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 6. 불러오기 : ";
+			cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 : ";
 			cin >> iInput;
 			if (!CheckInputRange(iInput, 1, 5))
 			{
@@ -86,9 +89,6 @@ struct Management
 				return;
 			else if (iInput == 5)
 				Save();
-			else if (iInput == 6)
-				Save();
-				break;
 
 			system("pause");
 		}
@@ -155,10 +155,10 @@ struct Management
 				return;
 			}
 
-			cout << "직업을 선택하세요(1. 전사 2. 마법사 3. 도적) : ";
+			cout << "직업을 선택하세요(1. 전사 2. 마법사 3. 도적 4. 불러오기) : ";
 			cin >> iInput;
 
-			if (!CheckInputRange(iInput, 1, 3))
+			if (!CheckInputRange(iInput, 1, 4))
 			{
 				repeatCnt++;
 				continue;
@@ -171,23 +171,27 @@ struct Management
 			system("pause");
 		}
 
+		if (iInput == 4)
+		{
+			Load();
+			return;
+		}
+
 		plyaer->eMyJobs = (JOBS)iInput;
 
 		return;
 	}
 
-	bool Save()
+	void Save()
 	{
-		json j;
-		j = *player;
-		cout << j.dump(4);
-		return true;
+		FileManager fileManager;
+		fileManager.Save(player);
 	}
 
-	bool Load()
+	void Load()
 	{
-
-		return true;
+		FileManager fileManager;
+		fileManager.Load(player);
 	}
 
 	void Quit()

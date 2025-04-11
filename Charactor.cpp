@@ -38,10 +38,10 @@ void Charactor::PrintMyState()
 	cout << "이름 : ";
 	PrintMyJob();
 	cout << '\n';
-	cout << "체력 : " << iMyMaxHealth << '/' << iMyHealth << " 공격력 : " << iMyDamage << '\n';
+	cout << "체력 : " << iMyMaxHealth << '/' << iMyHealth << "\t공격력 : " << iMyDamage << '\n';
 	if (!bIsEnemy)
 	{
-		cout << "LEVEL : " << iMyLevel << "EXP : " << iMyExp << '\n';
+		cout << "LEVEL : " << iMyLevel << "\tEXP : " << iMyExp << '\n';
 	}
 }
 
@@ -64,10 +64,11 @@ bool Charactor::Battle(Charactor* pTagEnemy)
 			iMyExp += pTagEnemy->iMyExp;
 			if (iMyExp >= iMyLevel * 10)
 			{
-				int iOverExp = (iMyLevel * 10) % iMyExp;
 				iMyLevel += 1;
-				iMyExp = iOverExp;
+				iMyExp = 0;
 
+				iMyMaxHealth += 10;
+				iMyHealth = iMyMaxHealth;
 				iMyDamage += 1;
 			}
 			bIsContinued = false;

@@ -19,9 +19,9 @@ enum JOBS
 	ADVANCED,
 };
 
-struct JsonData
+struct Data
 {
-	char save_path[MAX_PATH];
+	std::string save_path;
 
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(JsonData, save_path);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Data, save_path);
 };

@@ -12,10 +12,12 @@
 #include <Windows.h>
 #include <iostream>
 #include <string>
+#include <fstream>
 
 #include "json.hpp"
 
 #include "Management.h"
 #include "Charactor.h"
+#include "FileManager.h"
 
 #endif //PCH_H
