@@ -21,16 +21,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PathManager.h">
+    <ClCompile Include="FileManager.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="PathManager.cpp">
+    <ClCompile Include="FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JsonManager.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JsonManager.cpp">
+    <ClCompile Include="Charactor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +35,13 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharactorBase.h">
+    <ClInclude Include="Charactor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Management.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

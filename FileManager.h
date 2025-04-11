@@ -14,6 +14,9 @@ public:
 	std::string GetDataPath();
 	std::string GetSavePath();
 	std::string GetCurrentPath();
+	void CloseFileStream();
+	void Save(Charactor* pPlayer);
+	void Load(Charactor* pPlayer);
 
 private:
 };

@@ -135,10 +135,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="JsonManager.h" />
-    <ClCompile Include="JsonManager.cpp" />
-    <ClCompile Include="PathManager.cpp" />
-    <ClCompile Include="PathManager.h" />
+    <ClCompile Include="Charactor.cpp" />
+    <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="FileManager.h" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -148,9 +147,10 @@
     <ClCompile Include="TextRPG.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CharactorBase.h" />
+    <ClInclude Include="Charactor.h" />
     <ClInclude Include="Management.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

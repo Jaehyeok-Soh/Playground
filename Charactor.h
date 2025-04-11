@@ -20,7 +20,14 @@ public:
 	int iMyLevel = 1;
 	int iMyExp = 0;
 
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Charactor, name, level);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Charactor
+		, eMyJobs
+		, iMyMaxHealth
+		, iMyHealth
+		, iMyDamage
+		, bIsEnemy
+		, iMyLevel
+		, iMyExp);
 
 	void PrintMyJob();
 

@@ -19,16 +19,9 @@ enum JOBS
 	ADVANCED,
 };
 
-struct data
+struct JsonData
 {
-	path path[32];
+	char save_path[MAX_PATH];
 
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(data, path);
-};
-
-struct path
-{
-	char save[MAX_PATH];
-
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(path, save);
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(JsonData, save_path);
 };
