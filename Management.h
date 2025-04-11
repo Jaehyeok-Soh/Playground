@@ -4,21 +4,20 @@
 
 #include "json.hpp"
 
-#include "CharactorBase.h"
+#include "Charactor.h"
 
 using namespace std;
 using json = nlohmann::json;
 
 struct Management
 {
-	CharactorBase* tagCharactor;
+	Charactor* player = new Charactor();
 	bool bIsQuit = false;
 	int iInput = 0;
 
 	bool Start()
 	{
-		tagCharactor = new CharactorBase();
-		SelectClass(tagCharactor);
+		SelectJob(player);
 
 		while (!bIsQuit)
 		{
@@ -37,7 +36,7 @@ struct Management
 		while (loop)
 		{
 			system("cls");
-			tagCharactor->PrintMyState();
+			player->PrintMyState();
 
 			cout << "1. 사냥터 2. 종료 : ";
 			cin >> iInput;
@@ -68,7 +67,7 @@ struct Management
 		{
 			system("cls");
 
-			tagCharactor->PrintMyState();
+			player->PrintMyState();
 
 			cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 6. 불러오기 : ";
 			cin >> iInput;
@@ -95,20 +94,20 @@ struct Management
 		}
 	}
 
-	void Battle(classes eEnemyClass)
+	void Battle(JOBS eEnemyJob)
 	{
-		CharactorBase tagEnemy;
+		Charactor tagEnemy;
 
-		switch (eEnemyClass)
+		switch (eEnemyJob)
 		{
 		case BEGINNER:
-			tagEnemy = CharactorBase(BEGINNER, 30, 3, 3);
+			tagEnemy = Charactor(BEGINNER, 30, 3, 3);
 			break;
 		case INTERMEDIATE:
-			tagEnemy = CharactorBase(INTERMEDIATE, 60, 6, 6);
+			tagEnemy = Charactor(INTERMEDIATE, 60, 6, 6);
 			break;
 		case ADVANCED:
-			tagEnemy = CharactorBase(ADVANCED, 90, 9, 9);
+			tagEnemy = Charactor(ADVANCED, 90, 9, 9);
 			break;
 		}
 
@@ -117,7 +116,7 @@ struct Management
 		while (loop)
 		{
 			system("cls");
-			tagCharactor->PrintMyState();
+			player->PrintMyState();
 			tagEnemy.PrintMyState();
 
 			cout << "1. 공격 2. 도망 : ";
@@ -129,7 +128,7 @@ struct Management
 
 			if (iInput == 1)
 			{
-				loop = tagCharactor->Battle(&tagEnemy);
+				loop = player->Battle(&tagEnemy);
 				
 				continue;
 			}
@@ -141,7 +140,7 @@ struct Management
 		}
 	}
 
-	void SelectClass(CharactorBase* tagBase)
+	void SelectJob(Charactor* plyaer)
 	{
 		int repeatCnt(0);
 
@@ -172,7 +171,7 @@ struct Management
 			system("pause");
 		}
 
-		tagBase->eMyClass = (classes)iInput;
+		plyaer->eMyJobs = (JOBS)iInput;
 
 		return;
 	}
@@ -180,7 +179,7 @@ struct Management
 	bool Save()
 	{
 		json j;
-		j = *tagCharactor;
+		j = *player;
 		cout << j.dump(4);
 		return true;
 	}
@@ -193,8 +192,8 @@ struct Management
 
 	void Quit()
 	{
-		delete tagCharactor;
-		tagCharactor = nullptr;
+		delete player;
+		player = nullptr;
 	}
 
 	bool CheckInputRange(int iCheckInput, int iStart, int iEnd)

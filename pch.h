@@ -16,6 +16,6 @@
 #include "json.hpp"
 
 #include "Management.h"
-#include "CharactorBase.h"
+#include "Charactor.h"
 
 #endif //PCH_H
