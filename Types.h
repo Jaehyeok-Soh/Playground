@@ -2,10 +2,6 @@
 
 #include "json.hpp"
 
-#include <Windows.h>
-
-using json = nlohmann::json;
-
 #define BASEHEALTH 100;
 #define BASEDAMAGE 10;
 

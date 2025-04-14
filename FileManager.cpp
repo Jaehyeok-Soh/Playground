@@ -3,9 +3,6 @@
 #include "FileManager.h"
 #include "Types.h"
 
-using namespace std;
-using json = nlohmann::json;
-
 std::string FileManager::GetAssetPath(const std::string& fileName)
 {
 	return "assets\\" + fileName;

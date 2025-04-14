@@ -7,8 +7,6 @@
 #include "Charactor.h"
 #include "FileManager.h"
 
-using namespace std;
-
 bool Management::Start()
 {
 	SelectJob(player);
