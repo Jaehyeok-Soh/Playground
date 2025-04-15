@@ -4,7 +4,7 @@
 
 #include "Management.h"
 #include "Types.h"
-#include "Charactor.h"
+#include "Character.h"
 #include "FileManager.h"
 
 bool Management::Start()
@@ -85,18 +85,18 @@ void Management::SelectEnemy()
 
 void Management::Battle(JOBS eEnemyJob)
 {
-	Charactor tagEnemy;
+	Character tagEnemy;
 
 	switch (eEnemyJob)
 	{
 	case BEGINNER:
-		tagEnemy = Charactor(BEGINNER, 30, 3, 3);
+		tagEnemy = Character(BEGINNER, 30, 3, 3);
 		break;
 	case INTERMEDIATE:
-		tagEnemy = Charactor(INTERMEDIATE, 60, 6, 6);
+		tagEnemy = Character(INTERMEDIATE, 60, 6, 6);
 		break;
 	case ADVANCED:
-		tagEnemy = Charactor(ADVANCED, 90, 9, 9);
+		tagEnemy = Character(ADVANCED, 90, 9, 9);
 		break;
 	}
 
@@ -129,7 +129,7 @@ void Management::Battle(JOBS eEnemyJob)
 	}
 }
 
-void Management::SelectJob(Charactor* player)
+void Management::SelectJob(Character* player)
 {
 	int repeatCnt(0);
 

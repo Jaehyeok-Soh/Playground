@@ -33,7 +33,7 @@ std::string FileManager::GetSavePath()
 	return jsonData.save_path;
 }
 
-void FileManager::Save(Charactor* pPlayer)
+void FileManager::Save(Character* pPlayer)
 {
 	json j = *pPlayer;
 
@@ -51,7 +51,7 @@ void FileManager::Save(Charactor* pPlayer)
 	cout << "저장 성공\n";
 }
 
-void FileManager::Load(Charactor* pPlayer)
+void FileManager::Load(Character* pPlayer)
 {
 	std::ifstream inFile(GetSavePath());
 
@@ -62,7 +62,7 @@ void FileManager::Load(Charactor* pPlayer)
 
 	json j;
 	inFile >> j;
-	*pPlayer = j.get<Charactor>();
+	*pPlayer = j.get<Character>();
 
 	cout << "불러오기 성공\n";
 }

@@ -1,8 +1,8 @@
 #include "pch.h"
 
-#include "Charactor.h"
+#include "Character.h"
 
-void Charactor::PrintMyJob()
+void Character::PrintMyJob()
 {
 	switch (eMyJobs)
 	{
@@ -32,7 +32,7 @@ void Charactor::PrintMyJob()
 	}
 }
 
-void Charactor::PrintMyState()
+void Character::PrintMyState()
 {
 	cout << "=================================\n";
 	cout << "ÀÌ¸§ : ";
@@ -45,7 +45,7 @@ void Charactor::PrintMyState()
 	}
 }
 
-bool Charactor::Battle(Charactor* pTagEnemy)
+bool Character::Battle(Character* pTagEnemy)
 {
 	bool bIsContinued = true;
 	iMyHealth -= pTagEnemy->iMyDamage;

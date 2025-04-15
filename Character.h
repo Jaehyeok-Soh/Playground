@@ -9,7 +9,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-class Charactor
+class Character
 {
 public:
 	JOBS eMyJobs;
@@ -20,7 +20,7 @@ public:
 	int iMyLevel = 1;
 	int iMyExp = 0;
 
-	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Charactor
+	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Character
 		, eMyJobs
 		, iMyMaxHealth
 		, iMyHealth
@@ -33,10 +33,10 @@ public:
 
 	void PrintMyState();
 
-	bool Battle(Charactor* pEnemy);
+	bool Battle(Character* pEnemy);
 
-	Charactor() {};
-	Charactor(JOBS eInitMyJob, int iInitHealth, int iInitDamage, int iInitLevel, bool bInitIsEnemy = true)
+	Character() {};
+	Character(JOBS eInitMyJob, int iInitHealth, int iInitDamage, int iInitLevel, bool bInitIsEnemy = true)
 	{
 		eMyJobs = eInitMyJob;
 		iMyMaxHealth = iInitHealth;

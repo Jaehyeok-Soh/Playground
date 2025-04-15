@@ -19,7 +19,7 @@ using namespace std;
 using json = nlohmann::json;
 
 #include "Management.h"
-#include "Charactor.h"
+#include "Character.h"
 #include "FileManager.h"
 
 #ifdef _DEBUG

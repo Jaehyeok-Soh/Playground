@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Charactor.h"
+#include "Character.h"
 
 class FileManager
 {
@@ -11,8 +11,8 @@ public:
 	std::string GetDataPath();
 	std::string GetSavePath();
 	std::string GetCurrentPath();
-	void Save(Charactor* pPlayer);
-	void Load(Charactor* pPlayer);
+	void Save(Character* pPlayer);
+	void Load(Character* pPlayer);
 
 private:
 };

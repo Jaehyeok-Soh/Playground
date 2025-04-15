@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Types.h"
-#include "Charactor.h"
+#include "Character.h"
 
 class Management
 {
 public:
-	Charactor* player = new Charactor();
+	Character* player = new Character();
 	bool bIsQuit = false;
 	int iInput = 0;
 
@@ -14,7 +14,7 @@ public:
 	void MainLobby();
 	void SelectEnemy();
 	void Battle(JOBS eEnemyJob);
-	void SelectJob(Charactor* player);
+	void SelectJob(Character* player);
 	void Save();
 	void Load();
 	void Quit();
