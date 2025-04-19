@@ -9,16 +9,16 @@
 
 bool Management::Start()
 {
-	SelectJob(player);
+	SelectJob(m_pPlayer);
 
-	while (!bIsQuit)
+	while (!m_bIsQuit)
 	{
 		MainLobby();
 	}
 
 	Quit();
 
-	return bIsQuit;
+	return m_bIsQuit;
 }
 
 void Management::MainLobby()
@@ -28,22 +28,22 @@ void Management::MainLobby()
 	while (loop)
 	{
 		system("cls");
-		player->PrintMyState();
+		m_pPlayer->PrintMyState();
 
 		cout << "1. 사냥터 2. 종료 : ";
-		cin >> iInput;
-		if (!CheckInputRange(iInput, 1, 2))
+		cin >> m_iInput;
+		if (!CheckInputRange(m_iInput, 1, 2))
 		{
 			continue;
 		}
 
-		if (iInput == 1)
+		if (m_iInput == 1)
 		{
 			SelectEnemy();
 		}
 		else
 		{
-			bIsQuit = true;
+			m_bIsQuit = true;
 			return;
 		}
 
@@ -59,35 +59,35 @@ void Management::SelectEnemy()
 	{
 		system("cls");
 
-		player->PrintMyState();
+		m_pPlayer->PrintMyState();
 
 		cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 : ";
-		cin >> iInput;
-		if (!CheckInputRange(iInput, 1, 5))
+		cin >> m_iInput;
+		if (!CheckInputRange(m_iInput, 1, 5))
 		{
 			continue;
 		}
 
-		if (iInput == 1)
+		if (m_iInput == 1)
 			Battle(BEGINNER);
-		else if (iInput == 2)
+		else if (m_iInput == 2)
 			Battle(INTERMEDIATE);
-		else if (iInput == 3)
+		else if (m_iInput == 3)
 			Battle(ADVANCED);
-		else if (iInput == 4)
+		else if (m_iInput == 4)
 			return;
-		else if (iInput == 5)
+		else if (m_iInput == 5)
 			Save();
 
 		system("pause");
 	}
 }
 
-void Management::Battle(JOBS eEnemyJob)
+void Management::Battle(JOBS _eEnemyJob)
 {
 	Character tagEnemy;
 
-	switch (eEnemyJob)
+	switch (_eEnemyJob)
 	{
 	case BEGINNER:
 		tagEnemy = Character(BEGINNER, 30, 3, 3);
@@ -105,19 +105,19 @@ void Management::Battle(JOBS eEnemyJob)
 	while (loop)
 	{
 		system("cls");
-		player->PrintMyState();
+		m_pPlayer->PrintMyState();
 		tagEnemy.PrintMyState();
 
 		cout << "1. 공격 2. 도망 : ";
-		cin >> iInput;
-		if (!CheckInputRange(iInput, 1, 2))
+		cin >> m_iInput;
+		if (!CheckInputRange(m_iInput, 1, 2))
 		{
 			continue;
 		}
 
-		if (iInput == 1)
+		if (m_iInput == 1)
 		{
-			loop = player->Battle(&tagEnemy);
+			loop = m_pPlayer->Battle(&tagEnemy);
 
 			continue;
 		}
@@ -129,7 +129,7 @@ void Management::Battle(JOBS eEnemyJob)
 	}
 }
 
-void Management::SelectJob(Character* player)
+void Management::SelectJob(Character* _pPlayer)
 {
 	int repeatCnt(0);
 
@@ -140,14 +140,14 @@ void Management::SelectJob(Character* player)
 		if (repeatCnt > 3)
 		{
 			cout << "반복적인 잘못된 입력으로 종료합니다.";
-			bIsQuit = true;
+			m_bIsQuit = true;
 			return;
 		}
 
 		cout << "직업을 선택하세요(1. 전사 2. 마법사 3. 도적 4. 불러오기) : ";
-		cin >> iInput;
+		cin >> m_iInput;
 
-		if (!CheckInputRange(iInput, 1, 4))
+		if (!CheckInputRange(m_iInput, 1, 4))
 		{
 			repeatCnt++;
 			continue;
@@ -160,13 +160,13 @@ void Management::SelectJob(Character* player)
 		system("pause");
 	}
 
-	if (iInput == 4)
+	if (m_iInput == 4)
 	{
 		Load();
 		return;
 	}
 
-	player->SetMyJob((JOBS)iInput);
+	_pPlayer->SetMyJob((JOBS)m_iInput);
 
 	return;
 }
@@ -174,24 +174,24 @@ void Management::SelectJob(Character* player)
 void Management::Save()
 {
 	FileManager fileManager;
-	fileManager.Save(player);
+	fileManager.Save(m_pPlayer);
 }
 
 void Management::Load()
 {
 	FileManager fileManager;
-	fileManager.Load(player);
+	fileManager.Load(m_pPlayer);
 }
 
 void Management::Quit()
 {
-	delete player;
-	player = nullptr;
+	delete m_pPlayer;
+	m_pPlayer = nullptr;
 }
 
-bool Management::CheckInputRange(int iCheckInput, int iStart, int iEnd)
+bool Management::CheckInputRange(int _iCheckInput, int _iStart, int _iEnd)
 {
-	if (iCheckInput >= iStart && iCheckInput <= iEnd)
+	if (_iCheckInput >= _iStart && _iCheckInput <= _iEnd)
 		return true;
 	else
 		return false;
@@ -199,7 +199,7 @@ bool Management::CheckInputRange(int iCheckInput, int iStart, int iEnd)
 
 void Management::Release()
 {
-	SAFE_DELETE(player)
+	SAFE_DELETE(m_pPlayer)
 }
 
 Management::~Management()

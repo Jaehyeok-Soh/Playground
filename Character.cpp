@@ -2,14 +2,14 @@
 
 #include "Character.h"
 
-void Character::SetMyJob(JOBS job)
+void Character::SetMyJob(JOBS _eJob)
 {
-	this->eMyJobs = job;
+	this->m_eMyJobs = _eJob;
 }
 
 void Character::PrintMyJob()
 {
-	switch (eMyJobs)
+	switch (m_eMyJobs)
 	{
 	case WARRIOR:
 		cout << "전사";
@@ -43,47 +43,47 @@ void Character::PrintMyState()
 	cout << "이름 : ";
 	PrintMyJob();
 	cout << '\n';
-	cout << "체력 : " << iMyMaxHealth << '/' << iMyHealth << "\t공격력 : " << iMyDamage << '\n';
-	if (!bIsEnemy)
+	cout << "체력 : " << m_iMyMaxHealth << '/' << m_iMyHealth << "\t공격력 : " << m_iMyDamage << '\n';
+	if (!m_bIsEnemy)
 	{
-		cout << "LEVEL : " << iMyLevel << "\tEXP : " << iMyExp << '\n';
+		cout << "LEVEL : " << m_iMyLevel << "\tEXP : " << m_iMyExp << '\n';
 	}
 }
 
-bool Character::Battle(Character* pTagEnemy)
+bool Character::Battle(Character* _pEnemy)
 {
 	bool bIsContinued = true;
-	iMyHealth -= pTagEnemy->iMyDamage;
-	pTagEnemy->iMyHealth -= iMyDamage;
+	m_iMyHealth -= _pEnemy->m_iMyDamage;
+	_pEnemy->m_iMyHealth -= m_iMyDamage;
 
-	if (!bIsEnemy)
+	if (!m_bIsEnemy)
 	{
-		if (pTagEnemy->iMyHealth <= 0)
+		if (_pEnemy->m_iMyHealth <= 0)
 		{
 			cout << "승리\n";
-			if (iMyHealth <= 0)
+			if (m_iMyHealth <= 0)
 			{
-				iMyHealth = 1;
+				m_iMyHealth = 1;
 			}
 
-			iMyExp += pTagEnemy->iMyExp;
-			if (iMyExp >= iMyLevel * 10)
+			m_iMyExp += _pEnemy->m_iMyExp;
+			if (m_iMyExp >= m_iMyLevel * 10)
 			{
-				iMyLevel += 1;
-				iMyExp = 0;
+				m_iMyLevel += 1;
+				m_iMyExp = 0;
 
-				iMyMaxHealth += 10;
-				iMyHealth = iMyMaxHealth;
-				iMyDamage += 1;
+				m_iMyMaxHealth += 10;
+				m_iMyHealth = m_iMyMaxHealth;
+				m_iMyDamage += 1;
 			}
 			bIsContinued = false;
 			return bIsContinued;
 		}
 
-		if (iMyHealth <= 0)
+		if (m_iMyHealth <= 0)
 		{
 			cout << "플레이어 사망\n";
-			iMyHealth = iMyMaxHealth;
+			m_iMyHealth = m_iMyMaxHealth;
 
 			bIsContinued = false;
 			return bIsContinued;
@@ -98,15 +98,15 @@ Character::Character()
 	//empty
 }
 
-Character::Character(JOBS eInitMyJob, int iInitHealth, int iInitDamage, int iInitLevel, bool bInitIsEnemy)
+Character::Character(JOBS _eInitMyJob, int _iInitHealth, int _iInitDamage, int _iInitLevel, bool _bInitIsEnemy)
 {
-	eMyJobs = eInitMyJob;
-	iMyMaxHealth = iInitHealth;
-	iMyHealth = iInitHealth;
-	iMyDamage = iInitDamage;
-	iMyLevel = iInitLevel;
-	iMyExp = iInitLevel * 10;
-	bIsEnemy = bInitIsEnemy;
+	m_eMyJobs = _eInitMyJob;
+	m_iMyMaxHealth = _iInitHealth;
+	m_iMyHealth = _iInitHealth;
+	m_iMyDamage = _iInitDamage;
+	m_iMyLevel = _iInitLevel;
+	m_iMyExp = _iInitLevel * 10;
+	m_bIsEnemy = _bInitIsEnemy;
 }
 
 void to_json(nlohmann::json& j, const JOBS& c) {
