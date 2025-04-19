@@ -1,9 +1,9 @@
 {
-    "bIsEnemy": false,
-    "eMyJobs": 1,
-    "iMyDamage": 11,
-    "iMyExp": 0,
-    "iMyHealth": 110,
-    "iMyLevel": 2,
-    "iMyMaxHealth": 110
+    "m_bIsEnemy": false,
+    "m_eMyJobs": 1,
+    "m_iMyDamage": 23,
+    "m_iMyExp": 120,
+    "m_iMyHealth": 206,
+    "m_iMyLevel": 14,
+    "m_iMyMaxHealth": 230
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Types.h"
+#include "Define.h"
 #include "Character.h"
 
 class Management

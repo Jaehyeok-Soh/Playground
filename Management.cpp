@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "Management.h"
-#include "Types.h"
+#include "Define.h"
 #include "Character.h"
 #include "FileManager.h"
 

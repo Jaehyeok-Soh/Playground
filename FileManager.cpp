@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "FileManager.h"
-#include "Types.h"
+#include "Define.h"
 #include "SaveData.h"
 
 std::string FileManager::GetAssetPath(const std::string& fileName)

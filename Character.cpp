@@ -43,7 +43,7 @@ void Character::PrintMyState()
 	cout << "이름 : ";
 	PrintMyJob();
 	cout << '\n';
-	cout << "체력 : " << m_iMyMaxHealth << '/' << m_iMyHealth << "\t공격력 : " << m_iMyDamage << '\n';
+	cout << "체력 : " << m_iMyHealth << '/' << m_iMyMaxHealth << "\t공격력 : " << m_iMyDamage << '\n';
 	if (!m_bIsEnemy)
 	{
 		cout << "LEVEL : " << m_iMyLevel << "\tEXP : " << m_iMyExp << '\n';

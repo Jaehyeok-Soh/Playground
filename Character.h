@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "Types.h"
+#include "Define.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -18,7 +18,7 @@ protected:
 	int m_iMyDamage = BASEDAMAGE;
 	bool m_bIsEnemy = false;
 	int m_iMyLevel = 1;
-	int m_iMyExp = 0;	
+	int m_iMyExp = 0;
 
 public:
 	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Character
