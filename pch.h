@@ -7,6 +7,8 @@
 #ifndef PCH_H
 #define PCH_H
 
+#define _CRT_SECURE_NO_WARNINGS
+
 // add headers that you want to pre-compile here
 using namespace std;
 
@@ -14,14 +16,19 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <ctime>
 
 #include "json.hpp"
 using json = nlohmann::json;
 
+////////////////////////////////////////////////////////
+#include "Define.h"
 #include "Management.h"
 #include "Character.h"
 #include "FileManager.h"
 
+
+////////////////////////////////////////////////////////
 #ifdef _DEBUG
 
 #define _CRTDBG_MAP_ALLOC

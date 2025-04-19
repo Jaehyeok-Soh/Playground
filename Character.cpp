@@ -2,6 +2,11 @@
 
 #include "Character.h"
 
+void Character::SetMyJob(JOBS job)
+{
+	this->eMyJobs = job;
+}
+
 void Character::PrintMyJob()
 {
 	switch (eMyJobs)
@@ -86,6 +91,22 @@ bool Character::Battle(Character* pTagEnemy)
 	}
 
 	return bIsContinued;
+}
+
+Character::Character()
+{
+	//empty
+}
+
+Character::Character(JOBS eInitMyJob, int iInitHealth, int iInitDamage, int iInitLevel, bool bInitIsEnemy)
+{
+	eMyJobs = eInitMyJob;
+	iMyMaxHealth = iInitHealth;
+	iMyHealth = iInitHealth;
+	iMyDamage = iInitDamage;
+	iMyLevel = iInitLevel;
+	iMyExp = iInitLevel * 10;
+	bIsEnemy = bInitIsEnemy;
 }
 
 void to_json(nlohmann::json& j, const JOBS& c) {

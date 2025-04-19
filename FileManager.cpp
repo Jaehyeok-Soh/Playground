@@ -2,6 +2,7 @@
 
 #include "FileManager.h"
 #include "Types.h"
+#include "SaveData.h"
 
 std::string FileManager::GetAssetPath(const std::string& fileName)
 {

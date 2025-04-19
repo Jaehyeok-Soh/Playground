@@ -6,10 +6,6 @@
 class Management
 {
 public:
-	Character* player = new Character();
-	bool bIsQuit = false;
-	int iInput = 0;
-
 	bool Start();
 	void MainLobby();
 	void SelectEnemy();
@@ -19,6 +15,13 @@ public:
 	void Load();
 	void Quit();
 	bool CheckInputRange(int iCheckInput, int iStart, int iEnd);
+	void Release();
+
+public :
+	~Management();
 
 private:
+	Character* player = new Character();
+	bool bIsQuit = false;
+	int iInput = 0;
 };

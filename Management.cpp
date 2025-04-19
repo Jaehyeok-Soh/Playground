@@ -166,7 +166,7 @@ void Management::SelectJob(Character* player)
 		return;
 	}
 
-	player->eMyJobs = (JOBS)iInput;
+	player->SetMyJob((JOBS)iInput);
 
 	return;
 }
@@ -195,4 +195,14 @@ bool Management::CheckInputRange(int iCheckInput, int iStart, int iEnd)
 		return true;
 	else
 		return false;
+}
+
+void Management::Release()
+{
+	SAFE_DELETE(player)
+}
+
+Management::~Management()
+{
+	Release();
 }

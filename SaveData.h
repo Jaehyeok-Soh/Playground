@@ -1,21 +1,30 @@
 #pragma once
 
-#include ".h"
+#include "pch.h"
+#include "Character.h"
+#include "json.hpp"
 
-class SaveData : private Character
+using json = nlohmann::json;
+
+/// <summary>
+/// TODO: add time stamp
+/// 250419
+/// </summary>
+class SaveData : public Character
 {
 public:
-	SaveData : Character();
-	~SaveData : Character();
+	//time_t tDateTime;
 
-private:
+	//NLOHMANN_DEFINE_TYPE_INTRUSIVE(SaveData, tDateTime)
 
+	SaveData() : Character()
+	{
+		//time(&tDateTime);
+		//cout << ctime(&tDateTime);
+	}
 };
 
-SaveData : ::SaveData : Character()
-{
-}
-
-SaveData : ::~SaveData : Character()
-{
-}
+//void to_json(nlohmann::json& j, const SaveData& s) {
+//	nlohmann::to_json(j, static_cast<Character>(s));
+//	j.update({{"tDateTime", s.tDateTime}});
+//}
