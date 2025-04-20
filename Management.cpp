@@ -108,6 +108,8 @@ void Management::Battle(JOBS _eEnemyJob)
 		m_pPlayer->PrintMyState();
 		tagEnemy.PrintMyState();
 
+		m_Renderer.FieldRender();
+
 		cout << "1. °ø°Ý 2. µµ¸Á : ";
 		cin >> m_iInput;
 		if (!CheckInputRange(m_iInput, 1, 2))

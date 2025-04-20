@@ -2,10 +2,15 @@
 
 class Field
 {
-private :
-	POINT m_tPlayer_Point = { 0, 0 };
-	int m_iCol;
-	int m_iRow;
-	int m_iEnemy_Count;
-	bool m_bBattleEnable;
+public :
+	void Initialize();
+	void Update();
+	void Release();
+	void MapInit();
+	FieldInfo GetInfo();
+	Field();
+	~Field();
+
+protected :
+	FieldInfo m_tInfo;
 };

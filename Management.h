@@ -2,6 +2,7 @@
 
 #include "Define.h"
 #include "Character.h"
+#include "RendererService.h"
 
 class Management
 {
@@ -22,6 +23,7 @@ public :
 
 private:
 	Character* m_pPlayer = new Character();
+	RendererService m_Renderer;
 	bool m_bIsQuit = false;
 	int m_iInput = 0;
 };

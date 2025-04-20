@@ -19,6 +19,7 @@ protected:
 	bool m_bIsEnemy = false;
 	int m_iMyLevel = 1;
 	int m_iMyExp = 0;
+	COORD pos;
 
 public:
 	NLOHMANN_DEFINE_TYPE_INTRUSIVE(Character
