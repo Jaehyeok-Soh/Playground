@@ -15,6 +15,7 @@
 #define PLAYER_1X9 "(/.^¤µ^.)/"
 #define FIELD_WALL_OBJECT '='
 #define FIELD_DOOR_OBJECT '+'
+//Render_Info_End
 
 enum JOBS
 {
