@@ -18,7 +18,8 @@ using json = nlohmann::json;
 #include "Define.h"
 #include "Management.h"
 #include "Character.h"
-#include "FileManager.h"
+#include "Player.h"
+#include "Enemy.h"
 #include "Field.h"
 #include "RendererService.h"
 

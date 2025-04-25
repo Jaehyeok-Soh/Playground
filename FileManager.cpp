@@ -1,8 +1,8 @@
 #include "pch.h"
 
 #include "FileManager.h"
+#include "Character.h"
 #include "Define.h"
-#include "SaveData.h"
 
 std::string FileManager::GetAssetPath(const std::string& fileName)
 {
@@ -36,7 +36,8 @@ std::string FileManager::GetSavePath()
 
 void FileManager::Save(Character* pPlayer)
 {
-	json j = *pPlayer;
+	Player* player = dynamic_cast<Player*>(pPlayer);
+	json j = *player;
 
 	std::ofstream outFile(GetSavePath());
 
@@ -45,6 +46,8 @@ void FileManager::Save(Character* pPlayer)
 		cout << "file stream error\n";
 		return;
 	}
+
+	cout << j.dump(4);
 
 	outFile << j.dump(4);
 	outFile.close();
@@ -63,7 +66,10 @@ void FileManager::Load(Character* pPlayer)
 
 	json j;
 	inFile >> j;
-	*pPlayer = j.get<Character>();
+
+	Player player = j.get<Player>();
+
+	*pPlayer = player;
 
 	cout << "불러오기 성공\n";
 }

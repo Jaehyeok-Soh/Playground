@@ -4,12 +4,13 @@
 
 #include "Management.h"
 #include "Define.h"
-#include "Character.h"
 #include "FileManager.h"
+
+class Character;
 
 bool Management::Start()
 {
-	SelectJob(m_pPlayer);
+	SelectJob();
 
 	while (!m_bIsQuit)
 	{
@@ -28,7 +29,7 @@ void Management::MainLobby()
 	while (loop)
 	{
 		system("cls");
-		m_pPlayer->PrintMyState();
+		m_pPlayer->PrintStatus();
 
 		cout << "1. 사냥터 2. 종료 : ";
 		cin >> m_iInput;
@@ -59,7 +60,7 @@ void Management::SelectEnemy()
 	{
 		system("cls");
 
-		m_pPlayer->PrintMyState();
+		m_pPlayer->PrintStatus();
 
 		cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 5. 저장하기 : ";
 		cin >> m_iInput;
@@ -68,12 +69,8 @@ void Management::SelectEnemy()
 			continue;
 		}
 
-		if (m_iInput == 1)
-			Battle(BEGINNER);
-		else if (m_iInput == 2)
-			Battle(INTERMEDIATE);
-		else if (m_iInput == 3)
-			Battle(ADVANCED);
+		if (m_iInput >= 1 && m_iInput <= 3)
+			Battle((EnemyType)m_iInput);
 		else if (m_iInput == 4)
 			return;
 		else if (m_iInput == 5)
@@ -83,30 +80,17 @@ void Management::SelectEnemy()
 	}
 }
 
-void Management::Battle(JOBS _eEnemyJob)
+void Management::Battle(EnemyType _eType)
 {
-	Character tagEnemy;
-
-	switch (_eEnemyJob)
-	{
-	case BEGINNER:
-		tagEnemy = Character(BEGINNER, 30, 3, 3);
-		break;
-	case INTERMEDIATE:
-		tagEnemy = Character(INTERMEDIATE, 60, 6, 6);
-		break;
-	case ADVANCED:
-		tagEnemy = Character(ADVANCED, 90, 9, 9);
-		break;
-	}
+	Enemy cEnemy = Enemy(_eType);
 
 	bool loop = true;
 
 	while (loop)
 	{
 		system("cls");
-		m_pPlayer->PrintMyState();
-		tagEnemy.PrintMyState();
+		m_pPlayer->PrintStatus();
+		cEnemy.PrintStatus();
 
 		m_Renderer.FieldRender();
 
@@ -119,7 +103,7 @@ void Management::Battle(JOBS _eEnemyJob)
 
 		if (m_iInput == 1)
 		{
-			loop = m_pPlayer->Battle(&tagEnemy);
+			loop = m_pPlayer->Battle(&cEnemy);
 
 			continue;
 		}
@@ -131,7 +115,7 @@ void Management::Battle(JOBS _eEnemyJob)
 	}
 }
 
-void Management::SelectJob(Character* _pPlayer)
+void Management::SelectJob()
 {
 	int repeatCnt(0);
 
@@ -168,7 +152,7 @@ void Management::SelectJob(Character* _pPlayer)
 		return;
 	}
 
-	_pPlayer->SetMyJob((JOBS)m_iInput);
+	m_pPlayer->Set_Job((JOBS)m_iInput);
 
 	return;
 }

@@ -22,9 +22,22 @@ enum JOBS
 	WARRIOR = 1,
 	MAGE,
 	ROGUE,
-	BEGINNER,
+};
+
+enum EnemyType
+{
+	BEGINNER = 1,
 	INTERMEDIATE,
 	ADVANCED,
+};
+
+enum CHARACTERSTATE
+{
+	WAIT = 1,
+	WALK,
+	RUN,
+	ATTACK,
+	DEAD,
 };
 
 struct Data

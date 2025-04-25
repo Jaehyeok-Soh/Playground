@@ -1,9 +1,11 @@
 {
     "m_bIsEnemy": false,
-    "m_eMyJobs": 1,
-    "m_iMyDamage": 23,
-    "m_iMyExp": 120,
-    "m_iMyHealth": 206,
-    "m_iMyLevel": 14,
-    "m_iMyMaxHealth": 230
+    "m_eJob": "WARRIOR",
+    "m_eState": "WAIT",
+    "m_iDamage": 10,
+    "m_iExp": 5,
+    "m_iHealth": 91,
+    "m_iLevel": 1,
+    "m_iMaxHealth": 100,
+    "m_sName": ""
 }
