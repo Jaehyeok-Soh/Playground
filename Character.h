@@ -26,7 +26,7 @@ protected:
 	int m_iHealth = BASEHEALTH;
 	int m_iDamage = BASEDAMAGE;
 	bool m_bIsEnemy = false;
-	std::string m_sName;
+	std::string m_sName = "";
 	int m_iLevel = 1;
 	int m_iExp = 0;
 	COORD pos;

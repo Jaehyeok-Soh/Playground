@@ -64,12 +64,13 @@ void Character::SetType(EnemyType _eType) {}
 
 Character::Character(int _iInitHealth, int _iInitDamage, int _iInitLevel, bool _bInitIsEnemy)
 {
-	m_iMaxHealth = _iInitHealth;
-	m_iHealth = _iInitHealth;
-	m_iDamage = _iInitDamage;
-	m_iLevel = _iInitLevel;
-	m_iExp = _iInitLevel * 10;
-	m_bIsEnemy = _bInitIsEnemy;
+	//TODO: fix
+	//m_iMaxHealth = _iInitHealth;
+	//m_iHealth = _iInitHealth;
+	//m_iDamage = _iInitDamage;
+	//m_iLevel = _iInitLevel;
+	//m_iExp = _iInitLevel * 10;
+	//m_bIsEnemy = _bInitIsEnemy;
 }
 
 Character::~Character() {};

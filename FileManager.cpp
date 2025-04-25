@@ -39,25 +39,26 @@ void FileManager::Save(Character* pPlayer)
 	Player* player = dynamic_cast<Player*>(pPlayer);
 	json j = *player;
 
-	std::ofstream outFile(GetSavePath());
-
+	//std::ofstream outFile(GetSavePath());
+	std::ofstream outFile(GetSavePath(), std::ios::out | std::ios::binary);
 	if (!outFile)
 	{
 		cout << "file stream error\n";
 		return;
 	}
 
-	cout << j.dump(4);
+	//cout << j.dump(4, ' ', false , json::error_handler_t::replace);
 
-	outFile << j.dump(4);
+	outFile << j.dump(4, ' ', true, json::error_handler_t::ignore);
 	outFile.close();
 
-	cout << "저장 성공\n";
+	cout << "저장 완료\n";
 }
 
 void FileManager::Load(Character* pPlayer)
 {
-	std::ifstream inFile(GetSavePath());
+	//std::ifstream inFile(GetSavePath());
+	std::ifstream inFile(GetSavePath(), std::ios::in | std::ios::binary);
 
 	if (!inFile.is_open())
 	{
@@ -66,12 +67,14 @@ void FileManager::Load(Character* pPlayer)
 
 	json j;
 	inFile >> j;
-
+	
+	//TODO: 20250425
+	//nlohmann::json ANSI > UTF-8 인코딩 이슈 
 	Player player = j.get<Player>();
-
+	player.Set_Job(player.Get_Job());
 	*pPlayer = player;
 
-	cout << "불러오기 성공\n";
+	cout << "불러오기 완료\n";
 }
 
 std::string FileManager::GetCurrentPath()

@@ -7,6 +7,7 @@ class Player : public Character
 {
 public:
 	void Set_Job(JOBS job);
+	JOBS Get_Job();
 
 	Player();
 	~Player();

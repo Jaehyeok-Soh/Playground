@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Player.h"
 
 Player::Player()
@@ -14,17 +14,22 @@ void Player::Set_Job(JOBS job)
 	switch (job)
 	{
 	case WARRIOR:
-		m_sName = "¿¸ªÁ";
+		m_sName = "Ï†ÑÏÇ¨";
 		break;
 
 	case MAGE:
-		m_sName = "∏∂π˝ªÁ";
+		m_sName = "ÎßàÎ≤ïÏÇ¨";
 		break;
 
 	case ROGUE:
-		m_sName = "µµ¿˚";
+		m_sName = "ÎèÑÏ†Å";
 		break;
 	}
+}
+
+JOBS Player::Get_Job()
+{
+	return m_eJob;
 }
 
 void to_json(nlohmann::json& j, const Player& p) {
@@ -52,16 +57,6 @@ void from_json(const nlohmann::json& j, Player& p) {
 	j.at("m_eState").get_to(p.m_eState);
 	j.at("m_eJob").get_to(p.m_eJob);
 }
-
-//void to_json(nlohmann::json& j, const Player& p) {
-//	j = json{
-//		{"m_eJob", p.m_eJob}
-//	};
-//}
-//
-//void from_json(const nlohmann::json& j, Player& p) {
-//	j.at("m_eJob").get_to(p.m_eJob);
-//}
 
 void to_json(nlohmann::json& j, const JOBS& c) {
 	switch (c) {

@@ -365,6 +365,7 @@ ASALocalRun/
 
 .vs/
 .vs/*
+assets/save.json
 
 # Visual Studio History (VSHistory) files
 .vshistory/
