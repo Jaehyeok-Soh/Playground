@@ -3,6 +3,7 @@
 #include "Define.h"
 #include "Player.h"
 #include "RendererService.h"
+#include "Shop.h"
 
 class Management
 {
@@ -10,7 +11,7 @@ public:
 	bool Start();
 	void MainLobby();
 	void SelectEnemy();
-	void Battle(EnemyType _eType);
+	void Battle(ENEMY_TYPES _eType);
 	void SelectJob();
 	void Save();
 	void Load();
@@ -23,6 +24,7 @@ public:
 
 private:
 	Character* m_pPlayer = new Player();
+	Shop shop;
 	RendererService m_Renderer;
 	bool m_bIsQuit = false;
 	int m_iInput = 0;

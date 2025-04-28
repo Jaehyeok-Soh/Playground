@@ -1,8 +1,8 @@
 #include "pch.h"
-
 #include "FileManager.h"
 #include "Character.h"
 #include "Define.h"
+#include "Item.h"
 
 std::string FileManager::GetAssetPath(const std::string& fileName)
 {
@@ -14,24 +14,24 @@ std::string FileManager::GetDataPath()
 	return "assets\\data.json";
 }
 
-std::string FileManager::GetSavePath()
+DATA_JSON FileManager::GetPath()
 {
 	std::ifstream inFile(GetDataPath());
-	Data jsonData;
+	DATA_JSON jsonData;
 
 	if (!inFile.is_open())
 	{
 		cout << "file stream error\n";
-		return "";
+		return jsonData;
 	}
 
 	json j;
 	inFile >> j;
-	jsonData = j.get<Data>();
+	jsonData = j.get<DATA_JSON>();
 
 	inFile.close();
 
-	return jsonData.save_path;
+	return jsonData;
 }
 
 void FileManager::Save(Character* pPlayer)
@@ -40,16 +40,14 @@ void FileManager::Save(Character* pPlayer)
 	json j = *player;
 
 	//std::ofstream outFile(GetSavePath());
-	std::ofstream outFile(GetSavePath(), std::ios::out | std::ios::binary);
+	std::ofstream outFile(GetPath().save_path, std::ios::out | std::ios::binary);
 	if (!outFile)
 	{
 		cout << "file stream error\n";
 		return;
 	}
 
-	//cout << j.dump(4, ' ', false , json::error_handler_t::replace);
-
-	outFile << j.dump(4, ' ', true, json::error_handler_t::ignore);
+	outFile << j.dump(4, ' ', false, json::error_handler_t::ignore);
 	outFile.close();
 
 	cout << "저장 완료\n";
@@ -58,7 +56,7 @@ void FileManager::Save(Character* pPlayer)
 void FileManager::Load(Character* pPlayer)
 {
 	//std::ifstream inFile(GetSavePath());
-	std::ifstream inFile(GetSavePath(), std::ios::in | std::ios::binary);
+	std::ifstream inFile(GetPath().save_path, std::ios::in | std::ios::binary);
 
 	if (!inFile.is_open())
 	{
@@ -75,6 +73,21 @@ void FileManager::Load(Character* pPlayer)
 	*pPlayer = player;
 
 	cout << "불러오기 완료\n";
+}
+
+std::vector<Item> FileManager::LoadItemList()
+{
+	std::ifstream inFile(GetPath().item_path, std::ios::in | std::ios::binary);
+
+	if (!inFile.is_open())
+	{
+		cout << "file stream error\n";
+	}
+
+	json j;
+	inFile >> j;
+	
+	return j.get<std::vector<Item>>();
 }
 
 std::string FileManager::GetCurrentPath()

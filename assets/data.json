@@ -1,3 +1,4 @@
 {
-  "save_path": "./assets/save.json"
+  "save_path": "./assets/save.json",
+  "item_path":  "./assets/item.json"
 }

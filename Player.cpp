@@ -8,88 +8,78 @@ Player::Player()
 
 Player::~Player() {}
 
-void Player::Set_Job(JOBS job)
+void Player::PrintStatus()
+{
+	cout << "=================================\n";
+	cout << "이름 : " << m_strName << '\n';
+	cout << "체력 : " << m_iHealth << '/' << m_iMaxHealth << "\t공격력 : " << m_iDamage << "\t골드 : " << m_iGold << '\n';
+	cout << "LEVEL : " << m_iLevel << "\tEXP : " << m_iExp << '\n';
+}
+
+void Player::Set_Job(JOB_TYPES job)
 {
 	m_eJob = job;
 	switch (job)
 	{
 	case WARRIOR:
-		m_sName = "전사";
+		m_strName = "WARRIOR";
 		break;
 
 	case MAGE:
-		m_sName = "마법사";
+		m_strName = "MAGE";
 		break;
 
 	case ROGUE:
-		m_sName = "도적";
+		m_strName = "ROGUE";
 		break;
 	}
 }
 
-JOBS Player::Get_Job()
+JOB_TYPES Player::Get_Job()
 {
 	return m_eJob;
 }
 
-void to_json(nlohmann::json& j, const Player& p) {
-	j = json{
-		{"m_iMaxHealth", p.m_iMaxHealth},
-		{"m_iHealth", p.m_iHealth},
-		{"m_iDamage", p.m_iDamage},
-		{"m_bIsEnemy", p.m_bIsEnemy},
-		{"m_sName", p.m_sName},
-		{"m_iLevel", p.m_iLevel},
-		{"m_iExp", p.m_iExp},
-		{"m_eState", p.m_eState},
-		{"m_eJob", p.m_eJob}
-	};
-}
+bool Player::Battle(Character* _pEnemy)
+{
+	bool bIsContinued = true;
+	m_iHealth -= _pEnemy->GetDamage();
+	_pEnemy->SetHealth(-m_iDamage);
 
-void from_json(const nlohmann::json& j, Player& p) {
-	j.at("m_iMaxHealth").get_to(p.m_iMaxHealth);
-	j.at("m_iHealth").get_to(p.m_iHealth);
-	j.at("m_iDamage").get_to(p.m_iDamage);
-	j.at("m_bIsEnemy").get_to(p.m_bIsEnemy);
-	j.at("m_sName").get_to(p.m_sName);
-	j.at("m_iLevel").get_to(p.m_iLevel);
-	j.at("m_iExp").get_to(p.m_iExp);
-	j.at("m_eState").get_to(p.m_eState);
-	j.at("m_eJob").get_to(p.m_eJob);
-}
+	if (!m_bIsEnemy)
+	{
+		if (_pEnemy->GetHealth() <= 0)
+		{
+			cout << "승리\n";
+			if (m_iHealth <= 0)
+			{
+				m_iHealth = 1;
+			}
 
-void to_json(nlohmann::json& j, const JOBS& c) {
-	switch (c) {
-	case JOBS::WARRIOR: j = "WARRIOR"; break;
-	case JOBS::MAGE:    j = "MAGE"; break;
-	case JOBS::ROGUE:  j = "ROGUE"; break;
+			m_iExp += _pEnemy->GetExp();
+			SetGold(_pEnemy->GetGold());
+			if (m_iExp >= m_iLevel * 10)
+			{
+				m_iLevel += 1;
+				m_iExp = 0;
+
+				m_iMaxHealth += 10;
+				m_iHealth = m_iMaxHealth;
+				m_iDamage += 1;
+			}
+			bIsContinued = false;
+			return bIsContinued;
+		}
+
+		if (m_iHealth <= 0)
+		{
+			cout << "플레이어 사망\n";
+			m_iHealth = m_iMaxHealth;
+
+			bIsContinued = false;
+			return bIsContinued;
+		}
 	}
-}
 
-void from_json(const nlohmann::json& j, JOBS& c) {
-	std::string s = j.get<std::string>();
-	if (s == "WARRIOR") c = JOBS::WARRIOR;
-	else if (s == "MAGE") c = JOBS::MAGE;
-	else if (s == "ROGUE") c = JOBS::ROGUE;
-	else throw std::invalid_argument("Invalid role: " + s);
-}
-
-void to_json(nlohmann::json& j, const CHARACTERSTATE& c) {
-	switch (c) {
-	case CHARACTERSTATE::WAIT: j = "WAIT"; break;
-	case CHARACTERSTATE::WALK:    j = "WALK"; break;
-	case CHARACTERSTATE::RUN:  j = "RUN"; break;
-	case CHARACTERSTATE::ATTACK:  j = "ATTACK"; break;
-	case CHARACTERSTATE::DEAD:  j = "DEAD"; break;
-	}
-}
-
-void from_json(const nlohmann::json& j, CHARACTERSTATE& c) {
-	std::string s = j.get<std::string>();
-	if (s == "WAIT") c = CHARACTERSTATE::WAIT;
-	else if (s == "WALK") c = CHARACTERSTATE::WALK;
-	else if (s == "RUN") c = CHARACTERSTATE::RUN;
-	else if (s == "ATTACK") c = CHARACTERSTATE::ATTACK;
-	else if (s == "DEAD") c = CHARACTERSTATE::DEAD;
-	else throw std::invalid_argument("Invalid role: " + s);
+	return bIsContinued;
 }

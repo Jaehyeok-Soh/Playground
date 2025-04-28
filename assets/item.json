@@ -1,0 +1,61 @@
+[
+  {
+    "m_iId": 100,
+    "m_strName": "Healing potion",
+    "m_sAmount": -1,
+    "m_sPrice": 10,
+    "m_bIsEquip": false,
+    "m_eJob": 0,
+    "m_tEffects": {
+      "m_iHeal": 10
+    }
+  },
+  {
+    "m_iId": 200,
+    "m_strName": "Nomal Sword",
+    "m_sAmount": -1,
+    "m_sPrice": 100,
+    "m_bIsEquip": false,
+    "m_eJob": 1,
+    "m_tStats": {
+      "m_iAttack": 10,
+      "m_iHealth": 0
+    }
+  },
+  {
+    "m_iId": 201,
+    "m_strName": "Nomal Stick",
+    "m_sAmount": -1,
+    "m_sPrice": 100,
+    "m_bIsEquip": false,
+    "m_eJob": 2,
+    "m_tStats": {
+      "m_iAttack": 10,
+      "m_iHealth": 0
+    }
+  },
+  {
+    "m_iId": 202,
+    "m_strName": "Nomal Dagger",
+    "m_sAmount": -1,
+    "m_sPrice": 100,
+    "m_bIsEquip": false,
+    "m_eJob": 3,
+    "m_tStats": {
+      "m_iAttack": 10,
+      "m_iHealth": 0
+    }
+  },
+  {
+    "m_iId": 300,
+    "m_strName": "Nomal Sword",
+    "m_sAmount": -1,
+    "m_sPrice": 150,
+    "m_bIsEquip": false,
+    "m_eJob": 0,
+    "m_tStats": {
+      "m_iAttack": 0,
+      "m_iHealth": 100
+    }
+  }
+]

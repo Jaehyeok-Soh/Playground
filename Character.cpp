@@ -4,63 +4,43 @@
 #include "Character.h"
 using json = nlohmann::json;
 
-void Character::PrintStatus()
+void Character::PrintStatus() {}
+
+int Character::GetDamage()
 {
-	cout << "=================================\n";
-	cout << "이름 : " << m_sName << '\n';
-	cout << "체력 : " << m_iHealth << '/' << m_iMaxHealth << "\t공격력 : " << m_iDamage << '\n';
-	if (!m_bIsEnemy)
-	{
-		cout << "LEVEL : " << m_iLevel << "\tEXP : " << m_iExp << '\n';
-	}
+	return m_iDamage;
 }
 
-bool Character::Battle(Character* _pEnemy)
+int Character::GetHealth()
 {
-	bool bIsContinued = true;
-	m_iHealth -= _pEnemy->m_iDamage;
-	_pEnemy->m_iHealth -= m_iDamage;
-
-	if (!m_bIsEnemy)
-	{
-		if (_pEnemy->m_iHealth <= 0)
-		{
-			cout << "승리\n";
-			if (m_iHealth <= 0)
-			{
-				m_iHealth = 1;
-			}
-
-			m_iExp += _pEnemy->m_iExp;
-			if (m_iExp >= m_iLevel * 10)
-			{
-				m_iLevel += 1;
-				m_iExp = 0;
-
-				m_iMaxHealth += 10;
-				m_iHealth = m_iMaxHealth;
-				m_iDamage += 1;
-			}
-			bIsContinued = false;
-			return bIsContinued;
-		}
-
-		if (m_iHealth <= 0)
-		{
-			cout << "플레이어 사망\n";
-			m_iHealth = m_iMaxHealth;
-
-			bIsContinued = false;
-			return bIsContinued;
-		}
-	}
-
-	return bIsContinued;
+	return m_iHealth;
 }
 
-void Character::Set_Job(JOBS job) {}
+void Character::SetHealth(int _iValue)
+{
+	m_iHealth += _iValue;
+}
 
-void Character::SetType(EnemyType _eType) {}
+int Character::GetExp()
+{
+	return m_iExp;
+}
+
+void Character::SetGold(short _iValue)
+{
+	m_iGold += _iValue;
+}
+
+int Character::GetGold()
+{
+	return m_iGold;
+}
+
+bool Character::Battle(Character* _pEnemy) { return false; }
+
+void Character::Set_Job(JOB_TYPES job) {}
+
+void Character::Set_Type(ENEMY_TYPES _eType) {}
 
 Character::Character(int _iInitHealth, int _iInitDamage, int _iInitLevel, bool _bInitIsEnemy)
 {

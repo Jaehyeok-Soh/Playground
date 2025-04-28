@@ -22,8 +22,13 @@ using json = nlohmann::json;
 #include "Enemy.h"
 #include "Field.h"
 #include "RendererService.h"
-
+#include "Item.h"
+#include "Shop.h"
 ////////////////////////////////////////////////////////
+#include "CharacterInfo.h"
+#include "ItemInfo.h"
+////////////////////////////////////////////////////////
+
 #ifdef _DEBUG
 
 #define _CRTDBG_MAP_ALLOC

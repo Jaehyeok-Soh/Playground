@@ -6,8 +6,6 @@
 #include "Define.h"
 #include "FileManager.h"
 
-class Character;
-
 bool Management::Start()
 {
 	SelectJob();
@@ -31,9 +29,9 @@ void Management::MainLobby()
 		system("cls");
 		m_pPlayer->PrintStatus();
 
-		cout << "1. 사냥터 2. 종료 : ";
+		cout << "1. 사냥터 2. 상점 3. 가방 4. 종료 : ";
 		cin >> m_iInput;
-		if (!CheckInputRange(m_iInput, 1, 2))
+		if (!CheckInputRange(m_iInput, 1, 4))
 		{
 			continue;
 		}
@@ -41,6 +39,14 @@ void Management::MainLobby()
 		if (m_iInput == 1)
 		{
 			SelectEnemy();
+		}
+		else if (m_iInput == 2)
+		{
+			shop.Render(static_cast<Player*>(m_pPlayer));
+		}
+		else if (m_iInput == 3)
+		{
+			static_cast<Player*>(m_pPlayer)->m_inventory.PrintInventory();
 		}
 		else
 		{
@@ -70,7 +76,7 @@ void Management::SelectEnemy()
 		}
 
 		if (m_iInput >= 1 && m_iInput <= 3)
-			Battle((EnemyType)m_iInput);
+			Battle((ENEMY_TYPES)m_iInput);
 		else if (m_iInput == 4)
 			return;
 		else if (m_iInput == 5)
@@ -80,7 +86,7 @@ void Management::SelectEnemy()
 	}
 }
 
-void Management::Battle(EnemyType _eType)
+void Management::Battle(ENEMY_TYPES _eType)
 {
 	Enemy cEnemy = Enemy(_eType);
 
@@ -94,7 +100,7 @@ void Management::Battle(EnemyType _eType)
 
 		m_Renderer.FieldRender();
 
-		cout << "1. 사냥터 2. 종료 : ";
+		cout << "1. 공격 2. 도망 : ";
 		cin >> m_iInput;
 		if (!CheckInputRange(m_iInput, 1, 2))
 		{
@@ -152,7 +158,7 @@ void Management::SelectJob()
 		return;
 	}
 
-	m_pPlayer->Set_Job((JOBS)m_iInput);
+	m_pPlayer->Set_Job((JOB_TYPES)m_iInput);
 
 	return;
 }
