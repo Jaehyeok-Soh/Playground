@@ -46,15 +46,13 @@ void Management::MainLobby()
 		}
 		else if (m_iInput == 3)
 		{
-			static_cast<Player*>(m_pPlayer)->m_inventory.PrintInventory();
+			static_cast<Player*>(m_pPlayer)->OpenInventory();
 		}
 		else
 		{
 			m_bIsQuit = true;
 			return;
 		}
-
-		system("pause");
 	}
 }
 

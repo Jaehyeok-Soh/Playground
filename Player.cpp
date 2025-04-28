@@ -18,6 +18,9 @@ bool Player::SetEquipment(int _iKey)
 	if (item.m_iId < 200 && m_iHealth < m_iMaxHealth)
 	{
 		m_iHealth += item.m_tEffects.value().m_iHeal;
+		item.m_sAmount--;
+		if (item.m_sAmount <= 0)
+			m_inventory.Remove(item.m_iId);
 		result = true;
 	}
 
@@ -81,10 +84,22 @@ JOB_TYPES Player::Get_Job()
 
 void Player::OpenInventory()
 {
+	if (m_inventory.IsEmpty())
+	{
+		cout << "가방이 비었습니다." << endl;
+		system("pause");
+		return;
+	}
+
 	int input(0);
+
 	m_inventory.PrintInventory(true);
-	cout << "사용/해제 할 품목 번호를 입력하세요 : ";
+	cout << "사용/해제 할 품목 번호를 입력하세요(0. 나가기) : ";
 	cin >> input;
+	if (!input)
+	{
+		return;
+	}
 
 	int key = m_inventory.GetKey(input - 1);
 	if (SetEquipment(key))
@@ -95,6 +110,8 @@ void Player::OpenInventory()
 	{
 		cout << "사용/장착하지 못했습니다." << endl;
 	}
+
+	system("pause");
 }
 
 bool Player::Battle(Character* _pEnemy)

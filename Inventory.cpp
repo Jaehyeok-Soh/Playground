@@ -66,6 +66,16 @@ int Inventory::GetKey(int _index)
 	return iKey[_index];
 }
 
+bool Inventory::IsEmpty()
+{
+	return m_mapInventory.empty();
+}
+
+bool Inventory::Remove(int _iKey)
+{
+	return m_mapInventory.erase(_iKey);
+}
+
 const std::map<int, Item>& Inventory::GetItems() const
 {
 	return m_mapInventory;

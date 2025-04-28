@@ -65,12 +65,11 @@ void FileManager::Load(Character* pPlayer)
 
 	json j;
 	inFile >> j;
-	
+	cout << j.dump(4);
 	//TODO: 20250425
 	//nlohmann::json ANSI > UTF-8 인코딩 이슈 
-	Player player = j.get<Player>();
-	player.Set_Job(player.Get_Job());
-	*pPlayer = player;
+	
+	*static_cast<Player*>(pPlayer) = j.get<Player>();
 
 	cout << "불러오기 완료\n";
 }
