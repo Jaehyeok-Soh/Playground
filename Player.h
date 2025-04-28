@@ -39,7 +39,7 @@ inline void to_json(nlohmann::json& j, const Player& p) {
 		{"m_iGold", p.m_iGold},
 		{"m_eState", p.m_eState},
 		{"m_eJob", p.m_eJob},
-		{"m_Inventory", p.m_inventory},
+		{"m_inventory", p.m_inventory},
 	};
 }
 

@@ -1,28 +1,28 @@
 {
-    "m_Inventory": [
-        [
-            100,
-            {
-                "m_bIsEquip": false,
-                "m_eJob": 0,
-                "m_iId": 100,
-                "m_sAmount": 1,
-                "m_sPrice": 10,
-                "m_strName": "Healing potion",
-                "m_tEffects": {
-                    "m_iHeal": 10
-                }
-            }
-        ]
-    ],
-    "m_bIsEnemy": false,
-    "m_eJob": 1,
-    "m_eState": 1,
-    "m_iDamage": 10,
-    "m_iExp": 5,
-    "m_iGold": 20,
-    "m_iHealth": 91,
-    "m_iLevel": 1,
-    "m_iMaxHealth": 100,
-    "m_sName": "WARRIOR"
+  "m_inventory": [
+    [
+      100,
+      {
+        "m_bIsEquip": false,
+        "m_eJob": 0,
+        "m_iId": 100,
+        "m_sAmount": 1,
+        "m_sPrice": 10,
+        "m_strName": "Healing potion",
+        "m_tEffects": {
+          "m_iHeal": 10
+        }
+      }
+    ]
+  ],
+  "m_bIsEnemy": false,
+  "m_eJob": 1,
+  "m_eState": 1,
+  "m_iDamage": 10,
+  "m_iExp": 5,
+  "m_iGold": 20,
+  "m_iHealth": 91,
+  "m_iLevel": 1,
+  "m_iMaxHealth": 100,
+  "m_sName": "WARRIOR"
 }
