@@ -8,6 +8,45 @@ Player::Player()
 
 Player::~Player() {}
 
+bool Player::SetEquipment(int _iKey)
+{
+	bool result = false;
+
+	auto item = m_inventory.GetItem(_iKey);
+	item.m_bIsEquip = !item.m_bIsEquip;
+
+	if (item.m_iId < 200 && m_iHealth < m_iMaxHealth)
+	{
+		m_iHealth += item.m_tEffects.value().m_iHeal;
+		result = true;
+	}
+
+	if (item.m_iId >= 200)
+	{
+		if (item.m_bIsEquip)
+		{
+			m_iMaxHealth += item.m_tStats.value().m_iHealth;
+			m_iDamage += item.m_tStats.value().m_iAttack;
+		}
+		else
+		{
+			m_iMaxHealth -= item.m_tStats.value().m_iHealth;
+			m_iDamage -= item.m_tStats.value().m_iAttack;
+		}
+
+		result = true;
+	}
+
+	if (m_iHealth > m_iMaxHealth)
+	{
+		m_iHealth = m_iMaxHealth;
+	}
+
+	return result;
+}
+
+void Player::Set_Type(ENEMY_TYPES _eType) {}
+
 void Player::PrintStatus()
 {
 	cout << "=================================\n";
@@ -38,6 +77,24 @@ void Player::Set_Job(JOB_TYPES job)
 JOB_TYPES Player::Get_Job()
 {
 	return m_eJob;
+}
+
+void Player::OpenInventory()
+{
+	int input(0);
+	m_inventory.PrintInventory(true);
+	cout << "사용/해제 할 품목 번호를 입력하세요 : ";
+	cin >> input;
+
+	int key = m_inventory.GetKey(input - 1);
+	if (SetEquipment(key))
+	{
+		cout << "사용/장착 완료." << endl;
+	}
+	else
+	{
+		cout << "사용/장착하지 못했습니다." << endl;
+	}
 }
 
 bool Player::Battle(Character* _pEnemy)

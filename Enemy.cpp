@@ -45,3 +45,12 @@ void Enemy::PrintStatus()
 	cout << "이름 : " << m_strName << '\n';
 	cout << "체력 : " << m_iHealth << '/' << m_iMaxHealth << "\t공격력 : " << m_iDamage << '\n';
 }
+
+bool Enemy::Battle(Character* _pEnemy)
+{
+	return false;
+}
+
+void Enemy::Set_Job(JOB_TYPES job)
+{
+}

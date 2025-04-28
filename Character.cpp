@@ -4,8 +4,6 @@
 #include "Character.h"
 using json = nlohmann::json;
 
-void Character::PrintStatus() {}
-
 int Character::GetDamage()
 {
 	return m_iDamage;
@@ -35,12 +33,6 @@ int Character::GetGold()
 {
 	return m_iGold;
 }
-
-bool Character::Battle(Character* _pEnemy) { return false; }
-
-void Character::Set_Job(JOB_TYPES job) {}
-
-void Character::Set_Type(ENEMY_TYPES _eType) {}
 
 Character::Character(int _iInitHealth, int _iInitDamage, int _iInitLevel, bool _bInitIsEnemy)
 {

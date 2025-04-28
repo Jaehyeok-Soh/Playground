@@ -22,10 +22,10 @@ public:
 	void SetGold(short _iValue);
 	int GetGold();
 
-	virtual void PrintStatus();
-	virtual bool Battle(Character* _pEnemy);
-	virtual void Set_Job(JOB_TYPES job);
-	virtual void Set_Type(ENEMY_TYPES _eType);
+	virtual void PrintStatus() = 0;
+	virtual bool Battle(Character* _pEnemy) = 0;
+	virtual void Set_Job(JOB_TYPES job) = 0;
+	virtual void Set_Type(ENEMY_TYPES _eType) = 0;
 
 	Character() = default;
 	Character(int _iInitHealth, int _iInitDamage, int iInitLevel, bool _bInitIsEnemy = true);

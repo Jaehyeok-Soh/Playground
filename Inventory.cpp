@@ -23,7 +23,7 @@ bool Inventory::AddItem(const Item& _newItem)
 	return result;
 }
 
-std::vector<int> Inventory::PrintInventory()
+std::vector<int> Inventory::PrintInventory(bool _bEquip)
 {
 	int i = 1;
 	iKey.clear();
@@ -38,6 +38,11 @@ std::vector<int> Inventory::PrintInventory()
 		{
 			cout << "공격력 : " << item.second.m_tStats.value().m_iAttack << endl;
 			cout << "체력 : " << item.second.m_tStats.value().m_iHealth << endl;
+			if (_bEquip)
+			{
+				const char* c = item.second.m_bIsEquip ? "장착 중" : "장착 가능";
+				cout << c << endl;
+			}
 		}
 		if (item.second.m_tEffects.has_value())
 		{

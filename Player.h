@@ -11,6 +11,7 @@ public:
 	Inventory m_inventory;
 	
 	JOB_TYPES Get_Job();
+	void OpenInventory();
 
 	virtual void PrintStatus() override;
 	virtual void Set_Job(JOB_TYPES job) override;
@@ -22,7 +23,10 @@ public:
 private:
 	JOB_TYPES m_eJob;
 
-	bool SetEquipment();
+	virtual void Set_Type(ENEMY_TYPES _eType) override;
+
+	bool SetEquipment(int _iKey);
+
 	friend void to_json(nlohmann::json& j, const Player& p);
 	friend void from_json(const nlohmann::json& j, Player& p);
 };
