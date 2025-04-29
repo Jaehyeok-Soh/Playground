@@ -19,7 +19,7 @@ bool Player::SetEquipment(int _iKey)
 		m_iHealth += item.m_tEffects.value().m_iHeal;
 		item.m_sAmount--;
 		if (item.m_sAmount <= 0)
-			m_inventory.Remove(item.m_iId);
+			m_inventory.Remove(_iKey);
 		result = true;
 	}
 

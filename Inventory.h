@@ -10,7 +10,7 @@ public:
 	Item GetItem(int _iKey);
 	int GetKey(int _index);
 	bool IsEmpty();
-	bool Remove(int _iKey);
+	bool Remove(int _iKeyIndex);
 	
 	const std::map<int, Item>& GetItems() const;
 	void SetItems(const std::map<int, Item>& items);

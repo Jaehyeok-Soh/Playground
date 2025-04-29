@@ -79,9 +79,19 @@ bool Inventory::IsEmpty()
 	return m_mapInventory.empty();
 }
 
-bool Inventory::Remove(int _iKey)
+bool Inventory::Remove(const int _iKey)
 {
-	return m_mapInventory.erase(_iKey);
+	bool result = m_mapInventory.erase(_iKey);
+	if (result)
+	{
+		for (auto it = iKey.cbegin(); it != iKey.cend(); it++)
+		{
+			if (*it == _iKey)
+				iKey.erase(it); break;
+		}
+	}
+
+	return result;
 }
 
 const std::map<int, Item>& Inventory::GetItems() const

@@ -25,7 +25,7 @@ private:
 
 	virtual void Set_Type(ENEMY_TYPES _eType) override;
 
-	bool SetEquipment(int _iKey);
+	bool SetEquipment(int _iKeyIndex);
 
 	friend void to_json(nlohmann::json& j, const Player& p);
 	friend void from_json(const nlohmann::json& j, Player& p);
