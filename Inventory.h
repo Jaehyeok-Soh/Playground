@@ -6,6 +6,7 @@ class Inventory
 public:
 	bool AddItem(const Item& _newItem);
 	std::vector<int> PrintInventory(bool _bEquip = false);
+	void UpdateItem(Item item);
 	Item GetItem(int _iKey);
 	int GetKey(int _index);
 	bool IsEmpty();

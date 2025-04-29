@@ -13,7 +13,6 @@ bool Player::SetEquipment(int _iKey)
 	bool result = false;
 
 	auto item = m_inventory.GetItem(_iKey);
-	item.m_bIsEquip = !item.m_bIsEquip;
 
 	if (item.m_iId < 200 && m_iHealth < m_iMaxHealth)
 	{
@@ -26,6 +25,8 @@ bool Player::SetEquipment(int _iKey)
 
 	if (item.m_iId >= 200)
 	{
+		item.m_bIsEquip = !item.m_bIsEquip;
+
 		if (item.m_bIsEquip)
 		{
 			m_iMaxHealth += item.m_tStats.value().m_iHealth;
@@ -36,7 +37,7 @@ bool Player::SetEquipment(int _iKey)
 			m_iMaxHealth -= item.m_tStats.value().m_iHealth;
 			m_iDamage -= item.m_tStats.value().m_iAttack;
 		}
-
+		m_inventory.UpdateItem(item);
 		result = true;
 	}
 
@@ -102,7 +103,7 @@ void Player::OpenInventory()
 	}
 
 	int key = m_inventory.GetKey(input - 1);
-	if (SetEquipment(key))
+	if (key && SetEquipment(key))
 	{
 		cout << "사용/장착 완료." << endl;
 	}

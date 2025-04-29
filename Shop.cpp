@@ -47,7 +47,7 @@ void Shop::Render(Player* Player)
 
 void Shop::Buy(Player* Player, int _iValue)
 {
-	Item item = m_inventory.GetItem(m_inventory.GetKey(_iValue - 1));
+	auto item = m_inventory.GetItem(m_inventory.GetKey(_iValue - 1));
 
 	if (Player->GetGold() < item.m_sPrice)
 	{

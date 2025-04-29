@@ -56,6 +56,11 @@ std::vector<int> Inventory::PrintInventory(bool _bEquip)
 	return iKey;
 }
 
+void Inventory::UpdateItem(Item item)
+{
+	m_mapInventory.find(item.m_iId)->second = item;
+}
+
 Item Inventory::GetItem(int _iKey)
 {
 	return m_mapInventory.find(_iKey)->second;
@@ -63,6 +68,9 @@ Item Inventory::GetItem(int _iKey)
 
 int Inventory::GetKey(int _index)
 {
+	if (iKey.size() - 1 < _index)
+		return 0;
+
 	return iKey[_index];
 }
 
