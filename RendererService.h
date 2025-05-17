@@ -19,5 +19,6 @@ private:
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	COORD m_pos;
 	Field m_Field;
+	Player m_cCharacterObj;
 };
 

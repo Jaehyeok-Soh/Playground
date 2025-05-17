@@ -49,6 +49,7 @@ std::vector<int> Inventory::PrintInventory(bool _bEquip)
 			cout << "체력 회복 : " << item.second.m_tEffects.value().m_iHeal << endl;
 			cout << "개수 : " << item.second.m_sAmount << endl;
 		}
+		cout << endl;
 
 		i++;
 	}

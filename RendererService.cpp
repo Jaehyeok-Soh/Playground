@@ -43,6 +43,8 @@ void RendererService::GetCurrentCursorPosition()
 RendererService::RendererService()
 {
 	m_hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	csbi = CONSOLE_SCREEN_BUFFER_INFO();
+	m_pos = { 0, 0 };
 }
 
 RendererService::~RendererService()
