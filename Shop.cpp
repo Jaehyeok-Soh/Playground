@@ -58,7 +58,7 @@ void Shop::Buy(Player* Player, int _iValue)
 
 	if (Player->m_inventory.AddItem(item))
 	{
-		Player->SetGold(-item.m_sPrice);
+		Player->SetGold(Player->GetGold() - item.m_sPrice);
 		cout << "구매 성공" << endl;
 	}
 	else

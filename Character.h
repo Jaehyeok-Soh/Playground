@@ -5,22 +5,42 @@
 #include <string>
 
 #include "CharacterInfo.h"
-#include "Player.h"
+//#include "Player.h"
 
 using namespace std;
 
 class Character
 {
 public:
-	int GetDamage();
-	
+	CHARACTER_STATES GetState();
+	void SetState(CHARACTER_STATES _eValue);
+
+	int GetMaxHealth();
+	void SetMaxHealth(int _iValue);
+
 	int GetHealth();
 	void SetHealth(int _iValue);
+
+	int GetDamage();
+	void SetDamage(int _iValue);
+
+	bool GetIsEnemy();
+	void SetIsEnemy(bool _iValue);
+
+	std::string GetName();
+	void SetName(const string& _strValue);
 	
+	int GetLevel();
+	void SetLevel(int _iValue);
+
 	int GetExp();
+	void SetExp(int _iValue);
 	
-	void SetGold(short _iValue);
 	int GetGold();
+	void SetGold(short _iValue);
+
+	COORD GetPos();
+	void SetPos(int _iX, int _iY);
 
 	virtual void PrintStatus() = 0;
 	virtual bool Battle(Character* _pEnemy) = 0;

@@ -96,7 +96,7 @@ void Management::Battle(ENEMY_TYPES _eType)
 		m_pPlayer->PrintStatus();
 		cEnemy.PrintStatus();
 
-		m_Renderer.FieldRender();
+		m_Renderer->FieldRender();
 
 		cout << "1. °ø°Ý 2. µµ¸Á : ";
 		cin >> m_iInput;

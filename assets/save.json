@@ -4,11 +4,25 @@
     "m_eState": 1,
     "m_iDamage": 11,
     "m_iExp": 0,
-    "m_iGold": 10,
+    "m_iGold": 0,
     "m_iHealth": 110,
     "m_iLevel": 2,
     "m_iMaxHealth": 110,
     "m_inventory": [
+        [
+            100,
+            {
+                "m_bIsEquip": false,
+                "m_eJob": 0,
+                "m_iId": 100,
+                "m_sAmount": 1,
+                "m_sPrice": 10,
+                "m_strName": "Healing potion",
+                "m_tEffects": {
+                    "m_iHeal": 10
+                }
+            }
+        ],
         [
             200,
             {

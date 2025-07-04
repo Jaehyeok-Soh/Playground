@@ -153,7 +153,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RendererService.cpp" />
     <ClCompile Include="Shop.cpp" />
-    <ClCompile Include="TextRPG.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />

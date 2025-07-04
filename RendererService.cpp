@@ -1,4 +1,36 @@
 #include "pch.h"
+#include "RendererService.h"
+
+void RendererService::TextRender(const string* _text)
+{
+	std::cout << _text << std::endl;
+}
+
+void RendererService::OptionsRender(const vector<std::string>& _options)
+{
+	int i(1);
+	for (auto item : _options)
+	{
+		std::cout << i << ". " << item << "  ";
+		i++;
+	}
+}
+
+void RendererService::StatusRender(Character* _characterBase)
+{
+	cout << "=================================\n";
+	cout << "이름 : " << _characterBase->GetName() << '\n';
+
+	cout << "체력 : " << _characterBase->GetHealth() << '/' << _characterBase->GetMaxHealth()
+		<< "\t공격력 : " << _characterBase->GetDamage() << '\n';
+
+	if (!_characterBase->GetIsEnemy())
+	{
+		cout << "골드 : " << _characterBase->GetGold()
+			<< "\tLEVEL : " << _characterBase->GetLevel()
+			<< "\tEXP : " << _characterBase->GetExp() << '\n';
+	}
+}
 
 void RendererService::FieldRender()
 {
@@ -6,15 +38,26 @@ void RendererService::FieldRender()
 	GetCurrentCursorPosition();
 	COORD currentCursorPosition = { m_pos.X, m_pos.Y };
 
-	for (auto y = 0; y < FIELD_HEIGHT; y++)
+	for (SHORT y = 0; y < FIELD_HEIGHT; y++)
 	{
-		for (auto x = 0; x < FIELD_WIDTH; x++)
+		for (SHORT x = 0; x < FIELD_WIDTH; x++)
 		{
+			MoveCursor(currentCursorPosition.X + x, currentCursorPosition.Y + y);
 			cout << tFieldInfo.m_cMap[y][x];
 		}
 		cout << '\n';
 	}
 	cout << '\n';
+
+	//for (auto y = 0; y < FIELD_HEIGHT; y++)
+	//{
+	//	for (auto x = 0; x < FIELD_WIDTH; x++)
+	//	{
+	//		cout << tFieldInfo.m_cMap[y][x];
+	//	}
+	//	cout << '\n';
+	//}
+	//cout << '\n';
 }
 
 void RendererService::PlayerRender()
@@ -28,10 +71,11 @@ void RendererService::EnemyRender()
 {
 }
 
-void RendererService::MoveCursor(short _x, short _y)
+void RendererService::MoveCursor(SHORT _x, SHORT _y)
 {
-	m_pos = { _x, _y };
-	SetConsoleCursorPosition(m_hConsole, m_pos);
+	//m_pos = { _x, _y };
+	//SetConsoleCursorPosition(m_hConsole, m_pos);
+	SetConsoleCursorPosition(m_hConsole, {_x , _y});
 }
 
 void RendererService::GetCurrentCursorPosition()

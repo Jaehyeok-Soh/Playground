@@ -119,7 +119,7 @@ bool Player::Battle(Character* _pEnemy)
 {
 	bool bIsContinued = true;
 	m_iHealth -= _pEnemy->GetDamage();
-	_pEnemy->SetHealth(-m_iDamage);
+	_pEnemy->SetHealth(m_iHealth - m_iDamage);
 
 	if (!m_bIsEnemy)
 	{
@@ -132,7 +132,7 @@ bool Player::Battle(Character* _pEnemy)
 			}
 
 			m_iExp += _pEnemy->GetExp();
-			SetGold(_pEnemy->GetGold());
+			SetGold(m_iGold + _pEnemy->GetGold());
 			if (m_iExp >= m_iLevel * 10)
 			{
 				m_iLevel += 1;

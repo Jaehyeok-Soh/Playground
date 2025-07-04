@@ -4,7 +4,8 @@ int main()
 {
 	bool bIsQuit = false;
 
-	Management tagManagement;
+	RendererService renderer;
+	Management tagManagement = Management(&renderer);
 
 	while (!bIsQuit)
 	{

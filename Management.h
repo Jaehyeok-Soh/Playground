@@ -20,12 +20,13 @@ public:
 	void Release();
 
 	Management() = default;
+	Management(RendererService* _renderer) : m_Renderer(_renderer) {}
 	~Management();
 
 private:
 	Character* m_pPlayer = new Player();
 	Shop shop;
-	RendererService m_Renderer;
+	RendererService* m_Renderer;
 	bool m_bIsQuit = false;
 	int m_iInput = 0;
 };
